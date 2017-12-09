@@ -6,7 +6,7 @@
       "sizes": "400x400",
       "type": "image/jpg"
     }],
-    "start_url": "./RegistServiceWorker.html",
+    "start_url": "./index.html",
     "display": "standalone",
     "gcm_sender_id": "1014086547004"
 }
