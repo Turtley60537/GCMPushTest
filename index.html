@@ -6,26 +6,32 @@
     <title></title>
 </head>
 <body>
-    サービスワーカーを試すページです!<br>
-    まだサービスワーカーは動いていません！
-</body>
-    <script type="text/javascript">
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./serviceWorker.js');
+    <button type="button" id="getendpoint">Get Endpoint</button>
 
-            navigator.serviceWorker.ready
-                .then(function (registration) {
-                    return registration.pushManager.subscribe({ userVisibleOnly: true });
-                })
-                .then(function (subscription) {
-                    console.log('GCM EndPoint is:' + subscription.endpoint);
-                    var auth = subscription.getKey('auth') ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth')))) : '';
-                    console.log('User Auth is:' + auth);
-                    var publicKey = subscription.getKey('p256dh') ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))) : '';
-                    console.log('User PublicKey is:' + publicKey);
-                })
-                .catch(console.error.bind(console));
-        }
+</body>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("#getendpoint").on("click", function(){
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./serviceWorker.js');
+
+                navigator.serviceWorker.ready
+                    .then(function (registration) {
+                        return registration.pushManager.subscribe({ userVisibleOnly: true });
+                    })
+                    .then(function (subscription) {
+                        console.log('GCM EndPoint is:' + subscription.endpoint);
+                        var auth = subscription.getKey('auth') ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth')))) : '';
+                        console.log('User Auth is:' + auth);
+                        var publicKey = subscription.getKey('p256dh') ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))) : '';
+                        console.log('User PublicKey is:' + publicKey);
+                    })
+                    .catch(console.error.bind(console));
+            }
+        });
     </script>
     
 </html>
