@@ -1,14 +1,16 @@
 {
-    "name": "Recipient_Page",
+    "name": "Recipient_HackDay10th",
     "short_name": "recipient",
     "icons": [
         {
-            "src": "/assets/img/kame.jpg",
-            "sizes": "400x400",
-            "type": "image/jpg"
+            "src": "/static/img/icon/144.png",
+            "sizes": "144x144",
+            "type": "image/png"
         }
     ],
     "start_url": "/",
     "display": "standalone",
-    "theme_color": "#e91e63"
+    "theme_color": "#e91e63",
+    "gcm_sender_id": "12345678910",
+    "gcm_user_visible_only": true
 }
