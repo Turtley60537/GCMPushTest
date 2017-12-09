@@ -15,12 +15,20 @@
 </body>
 
 
-<script src="/__/firebase/3.9.0/firebase-app.js"></script>
-<script src="/__/firebase/3.9.0/firebase-messaging.js"></script>
-<script src="/__/firebase/init.js"></script>
-<script src='https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js'></script>
-<script src='https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js'></script>
-
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyANs5wwKjL8xTcWMnu8h5e724XenTG75vM",
+        authDomain: "hackdaywebpush.firebaseapp.com",
+        databaseURL: "https://hackdaywebpush.firebaseio.com",
+        projectId: "hackdaywebpush",
+        storageBucket: "hackdaywebpush.appspot.com",
+        messagingSenderId: "1014086547004"
+    };
+    firebase.initializeApp(config);
+    </script>
+    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         
