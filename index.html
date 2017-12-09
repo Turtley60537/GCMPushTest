@@ -28,6 +28,11 @@
                         console.log('User Auth is:' + auth);
                         var publicKey = subscription.getKey('p256dh') ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))) : '';
                         console.log('User PublicKey is:' + publicKey);
+
+                        $.get("example.com", {})
+                            .done(function(data){
+                                console.log("data loaded: "+data);
+                            });
                     })
                     .catch(console.error.bind(console));
             }
