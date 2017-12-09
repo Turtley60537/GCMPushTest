@@ -1,0 +1,14 @@
+{
+    "name": "Recipient_Page",
+    "short_name": "recipient",
+    "icons": [
+        {
+            "src": "/assets/img/kame.jpg",
+            "sizes": "400x400",
+            "type": "image/jpg"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#e91e63"
+}
