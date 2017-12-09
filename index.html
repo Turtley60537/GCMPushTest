@@ -6,6 +6,7 @@
     <title></title>
 </head>
 <body>
+    <input type="text" id="username"></input>
     <button type="button" id="getendpoint">Get Endpoint</button>
 
 </body>
@@ -29,10 +30,14 @@
                         var publicKey = subscription.getKey('p256dh') ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))) : '';
                         console.log('User PublicKey is:' + publicKey);
 
-                        $.post("http://example.com", "hoge")
-                            .done(function(data){
-                                console.log("Response: "+data);
-                            });
+                        let $username = encodeURIComponent($("#username").val());
+                        let endpoint = encodeURIComponent(subscription.endpoint);
+
+                        console.log("http://mayoneko.xyz/phptest/kernel_insert.php?name="+$username+"&device_url="+endpoint);
+                        // $.get("http://mayoneko.xyz/phptest/kernel_insert.php?name="+$username+"&device_url="+endpoint+"")
+                        //     .done(function(data){
+                        //         console.log("Response: "+data);
+                        //     });
                             
                     })
                     .catch(console.error.bind(console));
