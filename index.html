@@ -34,10 +34,10 @@
                         let endpoint = encodeURIComponent(subscription.endpoint);
 
                         console.log("http://mayoneko.xyz/phptest/kernel_insert.php?name="+$username+"&device_url="+endpoint);
-                        // $.get("http://mayoneko.xyz/phptest/kernel_insert.php?name="+$username+"&device_url="+endpoint+"")
-                        //     .done(function(data){
-                        //         console.log("Response: "+data);
-                        //     });
+                        $.get("http://mayoneko.xyz/phptest/kernel_insert.php?name="+$username+"&device_url="+endpoint+"")
+                            .done(function(data){
+                                console.log("Response: "+data);
+                            });
                             
                     })
                     .catch(console.error.bind(console));
