@@ -1,16 +1,12 @@
 {
-    "name": "Recipient_HackDay10th",
-    "short_name": "recipient",
-    "icons": [
-        {
-            "src": "/static/img/icon/144.png",
-            "sizes": "144x144",
-            "type": "image/png"
-        }
-    ],
-    "start_url": "/",
+    "name": "ServiceWorker Push",
+    "short_name": "ServiceWorker Push",
+    "icons": [{
+      "src": "assets/img/kame.jpg",
+      "sizes": "400x400",
+      "type": "image/jpg"
+    }],
+    "start_url": "./RegistServiceWorker.html",
     "display": "standalone",
-    "theme_color": "#e91e63",
-    "gcm_sender_id": "12345678910",
-    "gcm_user_visible_only": true
+    "gcm_sender_id": "1014086547004"
 }

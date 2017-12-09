@@ -1,67 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="manifest" href="/manifest.json">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <title></title>
 </head>
 <body>
-    <h1>hello world</h1>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js"></script>
-    <script>
-        Push.create("Hello world!", {
-            body: "Hello!!",
-            icon: 'assets/img/kame.jpg',
-            timeout: 4000,
-            onClick: function () {
-                window.focus();
-                this.close();
-            }
-        });
-
-    // window.addEventListener('load', function() {
-    //     if ('serviceWorker' in navigator) {
-    //       navigator.serviceWorker.register('/serviceWorker.js')
-    //         .then(function(registration) {
-    //           return registration.pushManager.getSubscription().then(function(subscription) {
-    //             if (subscription) {
-    //               return subscription
-    //             }
-    //             return registration.pushManager.subscribe({
-    //               userVisibleOnly: true
-    //             })
-    //           })
-    //         }).then(function(subscription) {
-    //           var endpoint = subscription.endpoint
-    //           console.log("pushManager endpoint:", endpoint) // https://android.googleapis.com/gcm/send/******:******......
-    //         }).catch(function(error) {
-    //           console.warn("serviceWorker error:", error)
-    //         })
-    //     }
-    //   })
-
-
-    // if ('serviceWorker' in navigator && 'PushManager' in window) {
-    //     console.log('Service Worker and Push is supported');
-
-    //     navigator.serviceWorker.register('sw.js')
-    //     .then(function(swReg) {
-    //         console.log('Service Worker is registered', swReg);
-
-    //         swRegistration = swReg;
-    //     })
-    //     .catch(function(error) {
-    //         console.error('Service Worker Error', error);
-    //     });
-    // } else {
-    //     console.warn('Push messaging is not supported');
-    //     pushButton.textContent = 'Push Not Supported';
-    // }
-
-    </script>
+    サービスワーカーを試すページです!<br>
+    まだサービスワーカーは動いていません！
 </body>
+    <script type="text/javascript">
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/serviceworker.js');
+
+            navigator.serviceWorker.ready
+                .then(function (registration) {
+                    return registration.pushManager.subscribe({ userVisibleOnly: true });
+                })
+                .then(function (subscription) {
+                    console.log('GCM EndPoint is:' + subscription.endpoint);
+                    var auth = subscription.getKey('auth') ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth')))) : '';
+                    console.log('User Auth is:' + auth);
+                    var publicKey = subscription.getKey('p256dh') ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))) : '';
+                    console.log('User PublicKey is:' + publicKey);
+                })
+                .catch(console.error.bind(console));
+        }
+    </script>
+    
 </html>
