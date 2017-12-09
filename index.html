@@ -30,7 +30,8 @@
                         console.log('User PublicKey is:' + publicKey);
 
                         $.ajax({
-                            url: "http://example.com/"
+                            url: "http://example.com/",
+                            dataType: "jsonp"
                         })
                         .done(function(data){
                             console.log("data loaded: "+data);
