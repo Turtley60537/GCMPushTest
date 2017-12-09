@@ -10,7 +10,19 @@
 <body>
     <h1>hello world</h1>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js"></script>
     <script>
+        Push.create("Hello world!", {
+            body: "Hello!!",
+            icon: 'assets/img/kame.jpg',
+            timeout: 4000,
+            onClick: function () {
+                window.focus();
+                this.close();
+            }
+        });
+
     // window.addEventListener('load', function() {
     //     if ('serviceWorker' in navigator) {
     //       navigator.serviceWorker.register('/serviceWorker.js')
@@ -31,22 +43,24 @@
     //         })
     //     }
     //   })
-    if ('serviceWorker' in navigator && 'PushManager' in window) {
-        console.log('Service Worker and Push is supported');
 
-        navigator.serviceWorker.register('sw.js')
-        .then(function(swReg) {
-            console.log('Service Worker is registered', swReg);
 
-            swRegistration = swReg;
-        })
-        .catch(function(error) {
-            console.error('Service Worker Error', error);
-        });
-    } else {
-        console.warn('Push messaging is not supported');
-        pushButton.textContent = 'Push Not Supported';
-    }
+    // if ('serviceWorker' in navigator && 'PushManager' in window) {
+    //     console.log('Service Worker and Push is supported');
+
+    //     navigator.serviceWorker.register('sw.js')
+    //     .then(function(swReg) {
+    //         console.log('Service Worker is registered', swReg);
+
+    //         swRegistration = swReg;
+    //     })
+    //     .catch(function(error) {
+    //         console.error('Service Worker Error', error);
+    //     });
+    // } else {
+    //     console.warn('Push messaging is not supported');
+    //     pushButton.textContent = 'Push Not Supported';
+    // }
 
     </script>
 </body>
